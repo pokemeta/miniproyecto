@@ -30,7 +30,7 @@ class Login extends CI_Controller {
                         "_email" => $usuario_existe_email->email
                     );
                     $this->session->set_userdata('app_sess', $session);
-                    redirect('Welcome');
+                    redirect('Proyectos');
                 }
                 else
                 {
