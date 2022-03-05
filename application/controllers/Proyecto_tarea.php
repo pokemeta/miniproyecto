@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Proyectos extends CI_Controller {
+class Proyecto_tarea extends CI_Controller {
     
     function __construct()
     {
@@ -10,13 +10,8 @@ class Proyectos extends CI_Controller {
     }
 
 	public function index(){
-		$this->load->view('proyectos_view');
+		$this->load->view('proyecto_tarea_view');
 	}
-    
-    public function crear_pagina()
-    {
-        $this->load->view('crear_proyecto_view');
-    }
 }
 
 ?>

@@ -19,7 +19,7 @@
                                     <h3 class="text-dark">Bienvenido usuario</h3>
                                 </div>
                                 <div class="col-12 mt-2">
-                                    <button class="btn btn-primary float-end">Nuevo</button>
+                                    <a href="<?= site_url('proyectos/crear_pagina'); ?>" class="btn btn-primary float-end">Nuevo</a>
                                 </div>
                                 <div class="col-12">
                                     <div class="row mt-2 justify-content-center">
@@ -30,14 +30,14 @@
                                                 <h3 class="text-white">Titulo</h3>
                                                 <p class="text-white">Numero de colaboradores: 3</p>
                                                 <p class="text-white">Publicado el: 04-03-2022</p>
-                                                <button class="btn btn-primary">Entrar al proyecto</button>
+                                                <a href="<?= site_url('proyecto_tarea'); ?>" class="btn btn-primary">Entrar al proyecto</a>
                                             </div>
                                             <div class="card p-2 bg-danger mt-2">
                                                 <img src="" alt="no image" width="50" height="50">
                                                 <h3 class="text-white">Titulo 2</h3>
                                                 <p class="text-white">Numero de colaboradores: 7</p>
                                                 <p class="text-white">Publicado el: 04-03-2022</p>
-                                                <button class="btn btn-primary">Entrar al proyecto</button>
+                                                <a href="<?= site_url('proyecto_tarea'); ?>" class="btn btn-primary">Entrar al proyecto</a>
                                             </div>
                                         </div>
                                         <div class="col-2"></div>
