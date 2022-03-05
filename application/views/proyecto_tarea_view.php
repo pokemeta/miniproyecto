@@ -58,6 +58,7 @@
                                             <p class="">Asignado a: muro</p>
                                             <p class="">Fecha limite: 04-03-2022</p>
                                             <p class="text-danger">Fecha entregado: 04-03-2022</p>
+                                            <a href="<?= site_url('tarea'); ?>" class="btn btn-primary">editar</a>
                                         </div>
                                     </div>
                                     <div class="card mt-2">
@@ -68,6 +69,7 @@
                                             <p class="">Asignado a: raul</p>
                                             <p class="">Fecha limite: 04-03-2022</p>
                                             <p class="text-danger">Fecha entregado: 04-03-2022</p>
+                                            <a href="<?= site_url('tarea'); ?>" class="btn btn-primary">editar</a>
                                         </div>
                                     </div>
                                 </div>
