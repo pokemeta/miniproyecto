@@ -18,9 +18,12 @@
                             <h5 class="text-white">crear proyecto</h5>
                         </div>
                         <div class="card-body">
+                            <!--<?php var_dump($registros['admin']->fk_usuario); ?>-->
                             <!--espacio del administrador-->
-                            <form class="row g-3" action="" method="post">
+                            <?php if($registros['admin']->fk_usuario == $this->session->userdata('app_sess')['_email']){ ?>
+                            <form class="row g-3" action="<?= site_url('proyecto_tarea/reg_colaborador?id='.$this->input->get('id')); ?>" method="post">
                                 <div class="col-12">
+                                    <!--<?php var_dump($registros['usuarios']); ?>-->
                                     <div class="row mt-2">
                                         <div class="col-4">
                                             <!--<?php 
@@ -30,8 +33,13 @@
                                                     $invalid = "is-invalid";
                                                 }
                                             ?>-->
-                                            <label for="titulo" class="form-label">Usuarios</label>
-                                            <input type="text" class="form-control" id="titulo" name="titulo">
+                                            <label for="fk_usuario" class="form-label">Usuarios</label>
+                                            <select name="fk_usuario" id="fk_usuario" class="form-select <?= $invalid; ?>">
+                                                <option value="" selected disabled>Selecciona una opción</option>
+                                                <?php foreach($registros['usuarios'] as $res){ ?>
+                                                <option value="<?= $res->email; ?>"><?= $res->nombre_completo; ?></option>
+                                                <?php } ?>
+                                            </select>
                                             <!--<?php if(@$this->session->flashdata('errores')['titulo']){ ?>
                                                 <div class="invalid-feedback">
                                                     <?=$this->session->flashdata('errores')['titulo'];?>
@@ -58,6 +66,7 @@
                                     </div>
                                 </div>
                             </form>
+                            <?php } ?>
                             <!--fin del espacio de administrador-->
                             <div class="col-12 mt-5 row">
                                 <div class="col-4 p-2 bg-warning">
