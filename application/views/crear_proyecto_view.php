@@ -18,27 +18,80 @@
                             <h5 class="text-white">crear proyecto</h5>
                         </div>
                         <div class="card-body">
-                            <form class="row g-3" action="<!--<?= site_url('alumnos/registrar'); ?>-->" method="post">
+                            <form class="row g-3" action="<?= site_url('proyectos/registrar'); ?>" method="post">
+                                <input type="hidden" name="fk_usuario" value="<?= $this->session->userdata('app_sess')['_email']; ?>">
                                 <div class="col-3">
+                                    <?php 
+                                        $invalid = "";
+                                        if(@$this->session->flashdata('errores')['titulo'])
+                                        {
+                                            $invalid = "is-invalid";
+                                        }
+                                    ?>
                                     <label for="titulo" class="form-label">Titulo</label>
-                                    <input type="text" class="form-control" id="titulo" name="titulo">
+                                    <input type="text" class="form-control <?= $invalid; ?>" id="titulo" name="titulo">
+                                    <?php if(@$this->session->flashdata('errores')['titulo']){ ?>
+                                        <div class="invalid-feedback">
+                                            <?=$this->session->flashdata('errores')['titulo'];?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                                 <div class="col-9">
+                                    <?php 
+                                        $invalid = "";
+                                        if(@$this->session->flashdata('errores')['descripcion'])
+                                        {
+                                            $invalid = "is-invalid";
+                                        }
+                                    ?>
                                     <label for="descripcion" class="form-label">Descripcion</label>
-                                    <textarea rows="6" class="form-control" id="descripcion" name="titulo"></textarea>
+                                    <textarea rows="6" class="form-control <?= $invalid; ?>" id="descripcion" name="descripcion"></textarea>
+                                    <?php if(@$this->session->flashdata('errores')['descripcion']){ ?>
+                                        <div class="invalid-feedback">
+                                            <?=$this->session->flashdata('errores')['descripcion'];?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                                 <div class="col-3">
+                                    <?php 
+                                        $invalid = "";
+                                        if(@$this->session->flashdata('errores')['icono'])
+                                        {
+                                            $invalid = "is-invalid";
+                                        }
+                                    ?>
                                     <label for="icono" class="form-label">Icono</label>
-                                    <input type="text" class="form-control" id="icono" name="icono">
+                                    <input type="text" class="form-control  <?= $invalid; ?>" id="icono" name="icono">
+                                    <?php if(@$this->session->flashdata('errores')['icono']){ ?>
+                                        <div class="invalid-feedback">
+                                            <?=$this->session->flashdata('errores')['icono'];?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                                 <div class="col-3">
+                                    <?php 
+                                        $invalid = "";
+                                        if(@$this->session->flashdata('errores')['color'])
+                                        {
+                                            $invalid = "is-invalid";
+                                        }
+                                    ?>
                                     <label for="color" class="form-label">Color</label>
-                                    <select name="color" id="color" class="form-select">
+                                    <select name="color" id="color" class="form-select <?= $invalid; ?>">
                                         <option value="" selected disabled>Selecciona una opción</option>
-                                        <option value="">Masculino</option>
-                                        <option value="">Femenino</option>
-                                        <option value="">Sin especificar</option>
+                                        <option value="bg-primary" class="bg-primary">Azul</option>
+                                        <option value="bg-secondary" class="bg-secondary">Gris</option>
+                                        <option value="bg-success" class="bg-success">Verde</option>
+                                        <option value="bg-danger" class="bg-danger">Rojo</option>
+                                        <option value="bg-warning" class="bg-warning">Amarillo</option>
+                                        <option value="bg-dark" class="bg-dark text-light">Negro</option>
+                                        <option value="bg-light" class="bg-light">Blanco</option>
                                     </select>
+                                    <?php if(@$this->session->flashdata('errores')['color']){ ?>
+                                        <div class="invalid-feedback">
+                                            <?=$this->session->flashdata('errores')['color'];?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary float-end" type="submit">Registrar</button>

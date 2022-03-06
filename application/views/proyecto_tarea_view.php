@@ -23,8 +23,20 @@
                                 <div class="col-12">
                                     <div class="row mt-2">
                                         <div class="col-4">
+                                            <!--<?php 
+                                                $invalid = "";
+                                                if(@$this->session->flashdata('errores')['titulo'])
+                                                {
+                                                    $invalid = "is-invalid";
+                                                }
+                                            ?>-->
                                             <label for="titulo" class="form-label">Usuarios</label>
                                             <input type="text" class="form-control" id="titulo" name="titulo">
+                                            <!--<?php if(@$this->session->flashdata('errores')['titulo']){ ?>
+                                                <div class="invalid-feedback">
+                                                    <?=$this->session->flashdata('errores')['titulo'];?>
+                                                </div>
+                                            <?php } ?>-->
                                             <button type="submit" class="btn btn-primary mt-5">Agregar</button>
                                         </div>
                                         <div class="col-8">

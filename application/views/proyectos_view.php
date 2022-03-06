@@ -25,7 +25,16 @@
                                     <div class="row mt-2 justify-content-center">
                                         <div class="col-5 bg-warning p-2">
                                             <h1>Proyectos activos</h1>
-                                            <div class="card p-2 bg-success mt-2">
+                                            <?php foreach($registros as $reg){ ?>
+                                                <div class="card p-2 <?= $reg->color; ?> mt-2">
+                                                    <img src="" alt="<?= $reg->icono; ?>" width="50" height="50">
+                                                    <h3 class="text-white"><?= $reg->titulo; ?></h3>
+                                                    <p class="text-white">Numero de colaboradores: 1</p>
+                                                    <p class="text-white">Publicado el: <?= $reg->fecha_reg; ?></p>
+                                                    <a href="<?= site_url('proyecto_tarea'); ?>" class="btn btn-info">Entrar al proyecto</a>
+                                                </div>
+                                            <?php } ?>
+                                            <!--<div class="card p-2 bg-success mt-2">
                                                 <img src="" alt="no image" width="50" height="50">
                                                 <h3 class="text-white">Titulo</h3>
                                                 <p class="text-white">Numero de colaboradores: 3</p>
@@ -38,7 +47,7 @@
                                                 <p class="text-white">Numero de colaboradores: 7</p>
                                                 <p class="text-white">Publicado el: 04-03-2022</p>
                                                 <a href="<?= site_url('proyecto_tarea'); ?>" class="btn btn-primary">Entrar al proyecto</a>
-                                            </div>
+                                            </div>-->
                                         </div>
                                         <div class="col-2"></div>
                                         <div class="col-5 bg-warning p-2">
