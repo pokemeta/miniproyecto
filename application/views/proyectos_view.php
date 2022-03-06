@@ -31,7 +31,7 @@
                                                     <h3 class="text-white"><?= $reg->titulo; ?></h3>
                                                     <p class="text-white">Numero de colaboradores: 1</p>
                                                     <p class="text-white">Publicado el: <?= $reg->fecha_reg; ?></p>
-                                                    <a href="<?= site_url('proyecto_tarea'); ?>" class="btn btn-info">Entrar al proyecto</a>
+                                                    <a href="<?= site_url('proyecto_tarea?id='.$reg->id); ?>" class="btn btn-info">Entrar al proyecto</a>
                                                 </div>
                                             <?php } ?>
                                             <!--<div class="card p-2 bg-success mt-2">

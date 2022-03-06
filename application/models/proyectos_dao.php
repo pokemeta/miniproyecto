@@ -28,6 +28,14 @@ class proyectos_dao extends CI_Model
         $this->db->insert('proyecto_usuarios', $datos);
     }
     /*----------------*/
+    
+    function obtenerColaboradoresDeProyecto($email, $id)
+    {
+        $this->db->where('fk_usuario', $email);
+        $this->db->where('fk_proyecto', $id);
+        $registros = $this->db->get('proyecto_usuarios');
+        return $registros->row();
+    }
 }
 
 ?>
