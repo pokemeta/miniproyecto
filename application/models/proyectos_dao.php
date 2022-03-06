@@ -15,12 +15,19 @@ class proyectos_dao extends CI_Model
         $this->db->insert('proyectos', $datos);
     }
     
-    /*function obtenerUsuarioPorId($id)
+    //estas dos functions son necesarias para registrar al admin
+    function obtenerProyectoId($nombre)
     {
-        $this->db->where('id', $id);
-        $registros = $this->db->get('ususarios');
+        $this->db->where('titulo', $nombre);
+        $registros = $this->db->get('proyectos');
         return $registros->row();
-    }*/
+    }
+    
+    function registrarColaborador($datos)
+    {
+        $this->db->insert('proyecto_usuarios', $datos);
+    }
+    /*----------------*/
 }
 
 ?>

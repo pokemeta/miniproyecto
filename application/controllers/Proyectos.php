@@ -57,7 +57,15 @@ class Proyectos extends CI_Controller {
                 "fecha_reg" => date('Y-m-d')
             );
             $this->proyectos_dao->registrarProyecto($datos);
+            
+            //para la adicion del admin a la tabla proyecto_usuarios
+            $datos2 = array(
+                "fk_usuario" => $this->input->post('fk_usuario'),
+                "fk_proyecto" => $this->proyectos_dao->obtenerProyectoId($this->input->post('titulo'))->id
+            );
+            $this->proyectos_dao->registrarColaborador($datos2);
             redirect('proyectos');
+            /*--------------------------------------------------------*/
         }
         else 
         {

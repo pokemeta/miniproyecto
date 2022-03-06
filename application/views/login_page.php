@@ -34,6 +34,7 @@
                                 <label for="password">Contraseña:</label>
                                 <input type="password" name="password" class="form-control">
                             </div>
+                            <a href="<?= site_url('crear_usuario'); ?>" class="btn btn-danger text-white">registrar cuenta</a>
                             <div class="col-12 form-group">
                                 <button type="submit" class="btn btn-primary">Log in</button>
                             </div>

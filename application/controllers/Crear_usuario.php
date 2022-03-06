@@ -62,7 +62,7 @@ class Crear_usuario extends CI_Controller
             );
             var_dump($datos);
             $this->usuario_dao->registrarUsuario($datos);
-            redirect('welcome');
+            redirect('login');
         }
         else 
         {
