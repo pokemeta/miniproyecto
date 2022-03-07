@@ -22,7 +22,7 @@
                                 <input type="hidden" name="id" value="<?= $this->input->get('id'); ?>">
                                 <input type="hidden" name="fk_proyecto" value="<?= $this->input->get('idp'); ?>">
                                 <div class="col-12">
-                                    <a href="" class="btn btn-success float-end">Marcar como terminado</a>
+                                    <a href="tarea/marcar_terminado?id=<?= $this->input->get('id'); ?>&&idp=<?= $this->input->get('idp'); ?>" class="btn btn-success float-end">Marcar como terminado</a>
                                     <a href="tarea/borrar?id=<?= $this->input->get('id'); ?>&&idp=<?= $this->input->get('idp'); ?>" class="btn btn-danger float-end">borrar</a>
                                 </div>
                                 <div class="col-3">

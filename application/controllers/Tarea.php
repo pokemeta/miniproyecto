@@ -25,11 +25,6 @@ class Tarea extends CI_Controller {
 		$this->load->view('tarea_view', $data);
 	}
     
-    public function test()
-    {
-        echo "test";
-    }
-    
     public function editar()
     {
         $this->load->library('form_validation');
@@ -82,6 +77,19 @@ class Tarea extends CI_Controller {
         $id = $this->input->get('id');
         $this->tareas_dao->borrarTarea($id);
         redirect('proyectos');
+    }
+    
+    public function marcar_terminado($id = null, $idproc = null)
+    {
+        $id = $this->input->get('id');
+        $idproc = $this->input->get('idp');
+        
+        $datos = array(
+            "status" => 'T'
+        );
+        
+        $this->tareas_dao->modificarTarea($datos, $id);
+        redirect('proyecto_tarea?id='.$idproc);
     }
 }
 
