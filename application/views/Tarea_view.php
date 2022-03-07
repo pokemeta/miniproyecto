@@ -24,8 +24,20 @@
                                     <a href="" class="btn btn-danger float-end">borrar</a>
                                 </div>
                                 <div class="col-3">
+                                    <?php 
+                                        $invalid = "";
+                                        if(@$this->session->flashdata('errores')['titulo'])
+                                        {
+                                            $invalid = "is-invalid";
+                                        }
+                                    ?>
                                     <label for="titulo" class="form-label">Titulo</label>
-                                    <input type="text" class="form-control" id="titulo" name="titulo">
+                                    <input type="text" class="form-control <?= $invalid; ?>" id="titulo" name="titulo">
+                                    <?php if(@$this->session->flashdata('errores')['titulo']){ ?>
+                                        <div class="invalid-feedback">
+                                            <?=$this->session->flashdata('errores')['titulo'];?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                                 <div class="col-9">
                                     <label for="descripcion" class="form-label">Descripcion</label>

@@ -74,46 +74,132 @@
                                 <div class="col-4 p-2 bg-warning">
                                     <h3 class="">Tareas</h3>
                                     <div class="card mt-2">
-                                        <div class="card-header bg-danger">
-                                            <h5 class="text-white">Titulo de la tarea</h5>
+                                        <?php if(@$registros['tareas']){ ?>
+                                            <?php foreach($registros['tareas'] as $res){ ?>
+                                            <?php
+                                                if($res->status == 'P')
+                                                {
+                                                    $style = "bg-danger";
+                                                }
+                                                else if($res->status == 'T')
+                                                {
+                                                    $style = "bg-success";
+                                                }
+                                            ?>
+                                            <div class="card-header <?= $style; ?>">
+                                                <h5 class="text-white"><?= $res->titulo ?></h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="">Asignado a: <?= $res->fk_usuario ?></p>
+                                                <p class="">Fecha limite: <?= $res->fc_limite ?></p>
+                                                <p class="text-danger">Fecha entregado: <?= $res->fc_entregado ?></p>
+                                                <a href="<?= site_url('tarea'); ?>" class="btn btn-primary">editar</a>
+                                            </div>
+                                            <!--<div class="card-header bg-danger">
+                                                <h5 class="text-white">Titulo de la tarea</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="">Asignado a: muro</p>
+                                                <p class="">Fecha limite: 04-03-2022</p>
+                                                <p class="text-danger">Fecha entregado: 04-03-2022</p>
+                                                <a href="<?= site_url('tarea'); ?>" class="btn btn-primary">editar</a>
+                                            </div>
                                         </div>
-                                        <div class="card-body">
-                                            <p class="">Asignado a: muro</p>
-                                            <p class="">Fecha limite: 04-03-2022</p>
-                                            <p class="text-danger">Fecha entregado: 04-03-2022</p>
-                                            <a href="<?= site_url('tarea'); ?>" class="btn btn-primary">editar</a>
-                                        </div>
-                                    </div>
-                                    <div class="card mt-2">
-                                        <div class="card-header bg-success">
-                                            <h5 class="text-white">Titulo de la tarea</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="">Asignado a: raul</p>
-                                            <p class="">Fecha limite: 04-03-2022</p>
-                                            <p class="text-danger">Fecha entregado: 04-03-2022</p>
-                                            <a href="<?= site_url('tarea'); ?>" class="btn btn-primary">editar</a>
-                                        </div>
+                                        <div class="card mt-2">
+                                            <div class="card-header bg-success">
+                                                <h5 class="text-white">Titulo de la tarea</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="">Asignado a: raul</p>
+                                                <p class="">Fecha limite: 04-03-2022</p>
+                                                <p class="text-danger">Fecha entregado: 04-03-2022</p>
+                                                <a href="<?= site_url('tarea'); ?>" class="btn btn-primary">editar</a>
+                                            </div>-->
+                                        <?php } ?>
+                                    <?php }else{ ?>
+                                    <div class="card-header bg-dark">
+                                                <h5 class="text-white">sin tareas</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="">Asignado a: ninguno</p>
+                                                <p class="">Fecha limite: ninguno</p>
+                                                <p class="text-danger">Fecha entregado: ninguno</p>
+                                            </div>
+                                    <?php } ?>
                                     </div>
                                 </div>
                                 <div class="col-1"></div>
                                 <div class="col-7 p-2 bg-warning">
-                                    <form class="row g-3" action="" method="post">
+                                    <form class="row g-3" action="<?= site_url('proyecto_tarea/registrar'); ?>" method="post">
+                                        <input type="hidden" name="fk_proyecto" value="<?= $this->input->get('id'); ?>">
                                         <div class="col-12">
                                             <label for="titulo" class="form-label">Titulo</label>
-                                            <input type="text" class="form-control" id="titulo" name="titulo">
+                                            <?php 
+                                                $invalid = "";
+                                                if(@$this->session->flashdata('errores')['titulo'])
+                                                {
+                                                    $invalid = "is-invalid";
+                                                }
+                                            ?>
+                                            <input type="text" class="form-control <?= $invalid; ?>" id="titulo" name="titulo">
+                                            <?php if(@$this->session->flashdata('errores')['titulo']){ ?>
+                                                <div class="invalid-feedback">
+                                                    <?=$this->session->flashdata('errores')['titulo'];?>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                         <div class="col-12">
+                                            <?php 
+                                                $invalid = "";
+                                                if(@$this->session->flashdata('errores')['descripcion'])
+                                                {
+                                                    $invalid = "is-invalid";
+                                                }
+                                            ?>
                                             <label for="descripcion" class="form-label">Descripcion</label>
-                                            <textarea rows="6" class="form-control" id="descripcion" name="descripcion"></textarea>
+                                            <textarea rows="6" class="form-control <?= $invalid; ?>" id="descripcion" name="descripcion"></textarea>
+                                            <?php if(@$this->session->flashdata('errores')['descripcion']){ ?>
+                                                <div class="invalid-feedback">
+                                                    <?=$this->session->flashdata('errores')['descripcion'];?>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                         <div class="col-6">
+                                            <?php 
+                                                $invalid = "";
+                                                if(@$this->session->flashdata('errores')['descripcion'])
+                                                {
+                                                    $invalid = "is-invalid";
+                                                }
+                                            ?>
                                             <label for="fc_limite" class="form-label">Fecha de entrega</label>
-                                            <input type="text" class="form-control" id="fc_limite" name="fc_limite">
+                                            <input type="date" class="form-control  <?= $invalid; ?>" id="fc_limite" name="fc_limite">
+                                            <?php if(@$this->session->flashdata('errores')['fc_limite']){ ?>
+                                                <div class="invalid-feedback">
+                                                    <?=$this->session->flashdata('errores')['fc_limite'];?>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                         <div class="col-6">
+                                            <?php 
+                                                $invalid = "";
+                                                if(@$this->session->flashdata('errores')['fk_usuario'])
+                                                {
+                                                    $invalid = "is-invalid";
+                                                }
+                                            ?>
                                             <label for="fk_usuario" class="form-label">Responsable</label>
-                                            <input type="text" class="form-control" id="fk_usuario" name="fk_usuario">
+                                            <select name="fk_usuario" id="fk_usuario" class="form-select <?= $invalid; ?>">
+                                                <option value="" selected disabled>Selecciona una opción</option>
+                                                <?php foreach($registros['usrs'] as $res){ ?>
+                                                <option value="<?= $res->email; ?>"><?= $res->nombre_completo; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <?php if(@$this->session->flashdata('errores')['fk_usuario']){ ?>
+                                                <div class="invalid-feedback">
+                                                    <?=$this->session->flashdata('errores')['fk_usuario'];?>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary float-end">Registrar tarea</button>
