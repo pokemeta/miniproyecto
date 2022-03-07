@@ -18,7 +18,7 @@
                             <h5 class="text-white">crear proyecto</h5>
                         </div>
                         <div class="card-body">
-                            <!--<?php var_dump($registros['admin']->fk_usuario); ?>-->
+                            <!--<?php var_dump($registros['usrs']); ?>-->
                             <!--espacio del administrador-->
                             <?php if($registros['admin']->fk_usuario == $this->session->userdata('app_sess')['_email']){ ?>
                             <form class="row g-3" action="<?= site_url('proyecto_tarea/reg_colaborador?id='.$this->input->get('id')); ?>" method="post">
@@ -56,10 +56,12 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <?php foreach($registros['usrs'] as $res){ ?>
                                                     <tr>
-                                                        <th>jwhiqkkhqkwejhjwqk</th>
-                                                        <td>test@email.com</td>
+                                                        <td><?= $res->nombre_completo; ?></td>
+                                                        <td><?= $res->email; ?></td>
                                                     </tr>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>

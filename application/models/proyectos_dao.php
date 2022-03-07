@@ -61,6 +61,20 @@ class proyectos_dao extends CI_Model
         $registros = $this->db->get('usuarios');
         return $registros->result();
     }
+    /*-----------------------*/
+    
+    //usuarios que se muestran en base a los emails que tienen el fk_proyecto(puesto como id)
+    function mostrarUsuarios($id)
+    {
+        $registros = $this->db->query('
+            SELECT * FROM usuarios WHERE email IN(
+            SELECT fk_usuario FROM proyecto_usuarios WHERE fk_proyecto ='.$id.'
+            )
+        '
+        );
+        return $registros->result();
+    }
+    /*------------------------------------*/
 }
 
 ?>

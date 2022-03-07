@@ -18,7 +18,8 @@ class Proyecto_tarea extends CI_Controller {
         {
             $datos['registros'] = array(
                 "admin" => $this->proyectos_dao->obtenerAdminDelProyecto($id),
-                "usuarios" => $this->proyectos_dao->obtenerUsuarios()
+                "usuarios" => $this->proyectos_dao->obtenerUsuarios(),
+                "usrs" => $this->proyectos_dao->mostrarUsuarios($id)
             );
             $this->load->view('proyecto_tarea_view', $datos);
         }
