@@ -49,7 +49,7 @@ class proyectos_dao extends CI_Model
     //para revisar si es admin o no
     function obtenerAdminDelProyecto($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('fk_proyecto', $id);
         $registros = $this->db->get('proyecto_usuarios');
         return $registros->row();
     }
