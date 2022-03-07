@@ -24,6 +24,58 @@ class Tarea extends CI_Controller {
         
 		$this->load->view('tarea_view', $data);
 	}
+    
+    public function test()
+    {
+        echo "test";
+    }
+    
+    public function editar()
+    {
+        $this->load->library('form_validation');
+        
+        $id = $this->input->post('id');
+        
+        $this->form_validation->set_rules(
+            "titulo",
+            "Titulo de la tarea",
+            "required|min_length[5]|max_length[20]"
+        );
+        $this->form_validation->set_rules(
+            "descripcion",
+            "Descripcion de la tarea",
+            "required|min_length[5]"
+        );
+        $this->form_validation->set_rules(
+            "fc_limite",
+            "Fecha limite de la tarea",
+            "required"
+        );
+        $this->form_validation->set_rules(
+            "fk_usuario",
+            "Responsable de la tarea",
+            "required"
+        );
+        
+        if($this->form_validation->run())
+        {
+            $datos = array(
+                "titulo" => $this->input->post('titulo'),
+                "descripcion" => $this->input->post('descripcion'),
+                "fk_usuario" => $this->input->post('fk_usuario'),
+                "fc_limite" => $this->input->post('fc_limite')
+            );
+            $this->tareas_dao->modificarTarea($datos, $id);
+            redirect('proyecto_tarea?id='.$this->input->post('fk_proyecto'));
+        }
+        else 
+        {
+            $this->load->library('session');
+            var_dump($this->form_validation->error_array());
+            /*$this->session->set_flashdata('errores', $this->form_validation->error_array());
+            redirect('proyecto_tarea?id='.$this->input->post('fk_proyecto'));*/
+        }
+    }
 }
 
 ?>

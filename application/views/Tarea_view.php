@@ -18,8 +18,9 @@
                             <h5 class="text-white">Editar tarea</h5>
                         </div>
                         <div class="card-body">
-                            <form class="row g-3" action="" method="post">
+                            <form class="row g-3" action="tarea/editar" method="post">
                                 <input type="hidden" name="id" value="<?= $this->input->get('id'); ?>">
+                                <input type="hidden" name="fk_proyecto" value="<?= $this->input->get('idp'); ?>">
                                 <div class="col-12">
                                     <a href="" class="btn btn-success float-end">Marcar como terminado</a>
                                     <a href="" class="btn btn-danger float-end">borrar</a>
@@ -42,7 +43,7 @@
                                 </div>
                                 <div class="col-9">
                                     <label for="descripcion" class="form-label">Descripcion</label>
-                                    <textarea rows="6" class="form-control" id="descripcion" name="titulo"><?= $dt['datos']->descripcion; ?></textarea>
+                                    <textarea rows="6" class="form-control" id="descripcion" name="descripcion"><?= $dt['datos']->descripcion; ?></textarea>
                                 </div>
                                 <div class="col-3">
                                     <label for="fc_limite" class="form-label">Fecha limite</label>
@@ -58,7 +59,7 @@
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary float-end" type="submit">Registrar</button>
+                                    <button class="btn btn-primary float-end" type="submit">Editar</button>
                                 </div>
                             </form>
                         </div>
