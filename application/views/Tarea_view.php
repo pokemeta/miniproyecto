@@ -23,7 +23,7 @@
                                 <input type="hidden" name="fk_proyecto" value="<?= $this->input->get('idp'); ?>">
                                 <div class="col-12">
                                     <a href="" class="btn btn-success float-end">Marcar como terminado</a>
-                                    <a href="" class="btn btn-danger float-end">borrar</a>
+                                    <a href="tarea/borrar?id=<?= $this->input->get('id'); ?>&&idp=<?= $this->input->get('idp'); ?>" class="btn btn-danger float-end">borrar</a>
                                 </div>
                                 <div class="col-3">
                                     <?php 

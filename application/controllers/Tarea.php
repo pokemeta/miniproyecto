@@ -76,6 +76,13 @@ class Tarea extends CI_Controller {
             redirect('proyecto_tarea?id='.$this->input->post('fk_proyecto'));*/
         }
     }
+    
+    public function borrar($id = null)
+    {
+        $id = $this->input->get('id');
+        $this->tareas_dao->borrarTarea($id);
+        redirect('proyectos');
+    }
 }
 
 ?>

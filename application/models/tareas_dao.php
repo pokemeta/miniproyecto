@@ -29,9 +29,10 @@ class tareas_dao extends CI_Model
         return $registro->row();
     }
     
-    function borrarTarea(id)
+    function borrarTarea($id)
     {
-        
+        $this->db->where('id', $id);
+        $this->db->delete('proyecto_tareas');
     }
 }
 
