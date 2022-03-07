@@ -19,6 +19,7 @@
                         </div>
                         <div class="card-body">
                             <form class="row g-3" action="" method="post">
+                                <input type="hidden" name="id" value="<?= $this->input->get('id'); ?>">
                                 <div class="col-12">
                                     <a href="" class="btn btn-success float-end">Marcar como terminado</a>
                                     <a href="" class="btn btn-danger float-end">borrar</a>
@@ -32,7 +33,7 @@
                                         }
                                     ?>
                                     <label for="titulo" class="form-label">Titulo</label>
-                                    <input type="text" class="form-control <?= $invalid; ?>" id="titulo" name="titulo">
+                                    <input type="text" class="form-control <?= $invalid; ?>" id="titulo" name="titulo" value="<?= $dt['datos']->titulo; ?>">
                                     <?php if(@$this->session->flashdata('errores')['titulo']){ ?>
                                         <div class="invalid-feedback">
                                             <?=$this->session->flashdata('errores')['titulo'];?>
@@ -41,19 +42,19 @@
                                 </div>
                                 <div class="col-9">
                                     <label for="descripcion" class="form-label">Descripcion</label>
-                                    <textarea rows="6" class="form-control" id="descripcion" name="titulo"></textarea>
+                                    <textarea rows="6" class="form-control" id="descripcion" name="titulo"><?= $dt['datos']->descripcion; ?></textarea>
                                 </div>
                                 <div class="col-3">
                                     <label for="fc_limite" class="form-label">Fecha limite</label>
-                                    <input type="text" class="form-control" id="fc_limite" name="fc_limite">
+                                    <input type="text" class="form-control" id="fc_limite" name="fc_limite" value="<?= $dt['datos']->fc_limite; ?>">
                                 </div>
                                 <div class="col-3">
                                     <label for="fk_usuario" class="form-label">Responsable</label>
-                                    <select name="fk_usuario" id="fk_usuario" class="form-select">
+                                    <select name="fk_usuario" id="fk_usuario" class="form-select <?= $invalid; ?>">
                                         <option value="" selected disabled>Selecciona una opción</option>
-                                        <option value="">Masculino</option>
-                                        <option value="">Femenino</option>
-                                        <option value="">Sin especificar</option>
+                                        <?php foreach($dt['usrs'] as $res){ ?>
+                                        <option value="<?= $res->email; ?>"  <?= $dt['datos']->fk_usuario == $res->email ? 'selected' : ''; ?>><?= $res->nombre_completo; ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                                 <div class="col-12">

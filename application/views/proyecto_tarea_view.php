@@ -18,7 +18,6 @@
                             <h5 class="text-white">crear proyecto</h5>
                         </div>
                         <div class="card-body">
-                            <!--<?php var_dump($registros['usrs']); ?>-->
                             <!--espacio del administrador-->
                             <?php if($registros['admin']->fk_usuario == $this->session->userdata('app_sess')['_email']){ ?>
                             <form class="row g-3" action="<?= site_url('proyecto_tarea/reg_colaborador?id='.$this->input->get('id')); ?>" method="post">
@@ -93,28 +92,8 @@
                                                 <p class="">Asignado a: <?= $res->fk_usuario ?></p>
                                                 <p class="">Fecha limite: <?= $res->fc_limite ?></p>
                                                 <p class="text-danger">Fecha entregado: <?= $res->fc_entregado ?></p>
-                                                <a href="<?= site_url('tarea'); ?>" class="btn btn-primary">editar</a>
+                                                <a href="<?= site_url('tarea?id='.$res->id.'&&idp='.$this->input->get('id')); ?>" class="btn btn-primary">editar</a>
                                             </div>
-                                            <!--<div class="card-header bg-danger">
-                                                <h5 class="text-white">Titulo de la tarea</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="">Asignado a: muro</p>
-                                                <p class="">Fecha limite: 04-03-2022</p>
-                                                <p class="text-danger">Fecha entregado: 04-03-2022</p>
-                                                <a href="<?= site_url('tarea'); ?>" class="btn btn-primary">editar</a>
-                                            </div>
-                                        </div>
-                                        <div class="card mt-2">
-                                            <div class="card-header bg-success">
-                                                <h5 class="text-white">Titulo de la tarea</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="">Asignado a: raul</p>
-                                                <p class="">Fecha limite: 04-03-2022</p>
-                                                <p class="text-danger">Fecha entregado: 04-03-2022</p>
-                                                <a href="<?= site_url('tarea'); ?>" class="btn btn-primary">editar</a>
-                                            </div>-->
                                         <?php } ?>
                                     <?php }else{ ?>
                                     <div class="card-header bg-dark">

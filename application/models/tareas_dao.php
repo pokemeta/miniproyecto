@@ -15,6 +15,19 @@ class tareas_dao extends CI_Model
         $registro = $this->db->get('proyecto_tareas');
         return $registro->result();
     }
+    
+    function modificarTarea($datos, $id)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('proyecto_tareas', $datos);
+    }
+    
+    function obtenerTareaPorId($id)
+    {
+        $this->db->where('id', $id);
+        $registro = $this->db->get('proyecto_tareas');
+        return $registro->row();
+    }
 }
 
 ?>
