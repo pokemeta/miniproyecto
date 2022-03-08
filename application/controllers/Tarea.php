@@ -85,7 +85,8 @@ class Tarea extends CI_Controller {
         $idproc = $this->input->get('idp');
         
         $datos = array(
-            "status" => 'T'
+            "status" => 'T',
+            "fc_entregado" => date('Y-m-d')
         );
         
         $this->tareas_dao->modificarTarea($datos, $id);

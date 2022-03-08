@@ -61,7 +61,7 @@
                                                         <td><?= $res->nombre_completo; ?></td>
                                                         <td><?= $res->email; ?></td>
                                                         <?php if($registros['admin']->fk_usuario != $res->email){ ?>
-                                                        <td><a href="<?= site_url('proyecto_tarea/reg_borrar?em='.$res->email.'&&id='.$this->input->get('id')); ?>" class="btn btn-danger">borrar</a></td>
+                                                        <td><a href="javascript:;" onclick="advertencia('<?= $res->email; ?>', '<?= $this->input->get('id'); ?>');" class="btn btn-danger float-end">Borrar</a></td>
                                                         <?php } else { ?>
                                                         <td></td>
                                                         <?php } ?>
@@ -200,4 +200,14 @@
             </div>
         </div>
     </body>
+    <script type="text/javascript">
+        function advertencia(em, id)
+        {
+            var resp = window.confirm("¿Quieres borrar al colaborador?");
+            if(resp)
+            {
+                window.location="<?= site_url('proyecto_tarea/reg_borrar?em='); ?>" +em+"&id="+id;
+            }
+        }
+    </script>
 </html>
