@@ -85,7 +85,8 @@ class proyectos_dao extends CI_Model
     
     function obtenerProyectosDeUsuario($email_usuario)
     {
-        $quer = "SELECT * FROM proyectos WHERE id IN(SELECT fk_proyecto FROM proyecto_usuarios WHERE fk_usuario = '$email_usuario');";
+        //selecciona el numero total de registros de colaboradores por cada proyecto filtrado por dueño
+        $quer = "SELECT p.*, (SELECT COUNT(*) FROM proyecto_usuarios WHERE fk_proyecto = p.id ) as total FROM proyectos AS p WHERE id IN(SELECT fk_proyecto FROM proyecto_usuarios WHERE fk_usuario = '$email_usuario');";
         $registros = $this->db->query($quer);
         return $registros->result();
     }
