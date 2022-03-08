@@ -92,7 +92,9 @@
                                                 <p class="">Asignado a: <?= $res->fk_usuario ?></p>
                                                 <p class="">Fecha limite: <?= $res->fc_limite ?></p>
                                                 <p class="text-danger">Fecha entregado: <?= $res->fc_entregado ?></p>
+                                                <?php if($res->status == 'P'){ ?>
                                                 <a href="<?= site_url('tarea?id='.$res->id.'&&idp='.$this->input->get('id')); ?>" class="btn btn-primary">editar</a>
+                                                <?php } ?>
                                             </div>
                                         <?php } ?>
                                     <?php }else{ ?>

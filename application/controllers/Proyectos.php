@@ -11,7 +11,7 @@ class Proyectos extends CI_Controller {
     }
 
 	public function index(){
-        $datos['registros'] = $this->proyectos_dao->obtenerProyectos();
+        $datos['registros'] = $this->proyectos_dao->obtenerProyectosDeUsuario($this->session->userdata('app_sess')["_email"]);
 		$this->load->view('proyectos_view', $datos);
 	}
     
