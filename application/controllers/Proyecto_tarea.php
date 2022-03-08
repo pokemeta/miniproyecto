@@ -43,6 +43,15 @@ class Proyecto_tarea extends CI_Controller {
         redirect('proyecto_tarea?id='.$id);
     }
     
+    public function reg_borrar($em = null, $id = null)
+    {
+        $em = $this->input->get('em');
+        $id = $this->input->get('id');
+        
+        $this->proyectos_dao->borrarColaborador($em, $id);
+        redirect('proyecto_tarea?id='.$id);
+    }
+    
     public function registrar()
     {
         $this->load->library('form_validation');

@@ -52,6 +52,7 @@
                                                     <tr>
                                                         <th scope="col">Nombre</th>
                                                         <th scope="col">Email</th>
+                                                        <th scope="col"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -59,6 +60,11 @@
                                                     <tr>
                                                         <td><?= $res->nombre_completo; ?></td>
                                                         <td><?= $res->email; ?></td>
+                                                        <?php if($registros['admin']->fk_usuario != $res->email){ ?>
+                                                        <td><a href="<?= site_url('proyecto_tarea/reg_borrar?em='.$res->email.'&&id='.$this->input->get('id')); ?>" class="btn btn-danger">borrar</a></td>
+                                                        <?php } else { ?>
+                                                        <td></td>
+                                                        <?php } ?>
                                                     </tr>
                                                     <?php } ?>
                                                 </tbody>

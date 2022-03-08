@@ -27,6 +27,13 @@ class proyectos_dao extends CI_Model
     {
         $this->db->insert('proyecto_usuarios', $datos);
     }
+    
+    function borrarColaborador($em, $id)
+    {
+        $this->db->where('fk_usuario', $em);
+        $this->db->where('fk_proyecto', $id);
+        $this->db->delete('proyecto_usuarios');
+    }
     /*----------------*/
     
     //para poder verificar si el usuario que entro al proyecto esta en la lista del proyecto o no
