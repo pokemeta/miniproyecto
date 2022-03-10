@@ -72,11 +72,12 @@ class Tarea extends CI_Controller {
         }
     }
     
-    public function borrar($id = null)
+    public function borrar($id = null, $proc = null)
     {
         $id = $this->input->get('id');
+        $proc = $this->input->get('proc');
         $this->tareas_dao->borrarTarea($id);
-        redirect('proyectos');
+        redirect('proyecto_tarea?id='.$proc);
     }
     
     public function marcar_terminado($id = null, $idproc = null)

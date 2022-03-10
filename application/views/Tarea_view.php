@@ -23,7 +23,7 @@
                                 <input type="hidden" name="fk_proyecto" value="<?= $this->input->get('idp'); ?>">
                                 <div class="col-12">
                                     <a href="tarea/marcar_terminado?id=<?= $this->input->get('id'); ?>&&idp=<?= $this->input->get('idp'); ?>" class="btn btn-success float-end">Marcar como terminado</a>
-                                    <a href="javascript:;" onclick="advertencia(<?= $this->input->get('id'); ?>)" class="btn btn-danger float-end">Borrar</a>
+                                    <a href="javascript:;" onclick="advertencia('<?= $this->input->get('id'); ?>', '<?= $this->input->get('idp'); ?>')" class="btn btn-danger float-end">Borrar</a>
                                     <p id="demo"></p>
                                 </div>
                                 <div class="col-3">
@@ -70,12 +70,12 @@
         </div>
     </body>
     <script type="text/javascript">
-        function advertencia(id)
+        function advertencia(id, proc)
         {
             var resp = window.confirm("¿Quieres borrar la tarea?");
             if(resp)
             {
-                window.location="<?= site_url('tarea/borrar?id='); ?>" + id;
+                window.location="<?= site_url('tarea/borrar?id='); ?>" + id + "&proc=" + proc;
             }
         }
     </script>
